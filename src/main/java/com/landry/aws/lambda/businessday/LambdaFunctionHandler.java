@@ -13,6 +13,9 @@ public class LambdaFunctionHandler implements RequestHandler<BusinessDayInput, B
     public BusinessDayOutput handleRequest(BusinessDayInput input, Context context) {
         context.getLogger().log("Input: " + input);
 
+        if ( input != null && input.getPing() != null )
+        	return null;
+
         if (input.getBusinessDays() == null || input.getDate() == null )
 			return new BusinessDayOutput.Builder().info("No valid business day or date given...").build();
 		
