@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.landry.aws.lambda.common.model.BusinessDayInput;
 import com.landry.aws.lambda.common.model.BusinessDayOutput;
+import com.landry.aws.lambda.common.util.LambdaFunctions;
 import com.landry.aws.lambda.common.util.MyDateUtil;
 
 public class LambdaFunctionHandler implements RequestHandler<BusinessDayInput, BusinessDayOutput> {
@@ -12,6 +13,7 @@ public class LambdaFunctionHandler implements RequestHandler<BusinessDayInput, B
     @Override
     public BusinessDayOutput handleRequest(BusinessDayInput input, Context context) {
         context.getLogger().log("Input: " + input);
+        context.getLogger().log("Function: " + LambdaFunctions.DATE_BUSINESS_DAYS_OUT);
 
         if ( input != null && input.getPing() != null )
         	return null;
